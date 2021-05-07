@@ -1,0 +1,859 @@
+﻿PHẦN 01: LÀM QUEN VỚI CSS.
+	01. Các kiểu CSS: có 3 kiểu
+		- Inline (Internal line)(nội tuyến): viết CSS vào attribute style của thẻ HTML
+			- Thực tế một website khi hoàn thiện cần có bước lấy dữ liệu từ database để hiển thị ra. Trong trường hợp bạn hiển thị ảnh với background-image mà ảnh đó được lấy từ database thì bạn phải sử dụng CSS inline.
+			- Và khi làm việc với DOM (sẽ học trong khóa Javascript) chúng ta thường thay đổi giá trị của các thuộc tính CSS trên mỗi thành phần HTML qua thuộc tính style. Thay đổi này sẽ tạo nên các thay đổi CSS inline
+		- Internal (nội bộ): Sử dụng cặp thẻ <style></style> và viết CSS vào cho nó
+			Khi một trang xuất hiện một thành phần chỉ sử dụng duy nhất trong trang này bạn cũng có thể sử dụng CSS internal. Tuy nhiên cũng cần nhiều kinh nghiệm để có thể đánh giá một cách đúng đắn.
+		- EXternal (bên ngoài nội bộ): Sử dụng file css bên ngoài, rồi link vào file html (Nhúng)
+			Giúp code được gọn gàng và tách bạch hơn. Giúp dễ dàng trong việc sử dụng lại giữa nhiều trang khác nhau.
+		Tác dụng => Lựa chọn cách nào không quan trọng, quan trọng là phù hợp!
+	02. ATTRIBUTE ID và CLASS:
+		- Đặt "id" (định danh - indentity)cho các thành phần xuất hiện một lần
+			- Trong một trang HTML không được đặt id trùng nhau
+			- Đặt trùng nhau vẫn chạy, nhưng không đúng về ý nghĩa, sau này sử dụng Javascript gọi tên id sẽ bị lỗi/hiểu nhầm giữa 2 id giống nhau
+			- Một thẻ HTML không được nhiều hơn một ID
+		- Đặt "class" (lớp) cho các thành phần có thể xuất hiện nhiều lần để tái sử dụng CSS, tránh lặp lại code CSS
+			- Giúp code CSS gọn gàng hơn 
+			- Các thành phần (thẻ - emlement) cùng lớp sẽ có CSS giống nhau
+			- Có thể đặt một hoặc nhiều class cho thẻ HTML (cách nhau bằng dấu space - Ví dụ: class = "class1 class2")
+		===============================================
+	04.CSS SELECTOR (BỘ CHỌN CSS)
+		- Là các cách chúng ta sử dụng để chọn ra các phần tử (elements) mà chúng ta muốn “style” cho chúng.
+		- CSS selectors là công cụ vô cùng mạnh mẽ. 
+		- Toàn bộ các selectors trong CSS đều có thể linh động kết hợp với nhau khi sử dụng giúp lập trình viên có thể chọn được bất cứ phần tử HTML nào trong website.
+		0. Chọn tất cả 
+			Sử dụng dấu *
+		1. Chọn bằng tag_name (tên thẻ):
+			Các thẻ có tên đó đều chịu ảnh hưởng.
+		2. Chọn bằng id (indentity: định danh)
+			Chỉ sử dụng cho 1 thẻ, không thể đặt id của 2 thẻ giống nhau=> sai hoàn toàn
+		3. Chọn bằng class:
+			Giống như id, nhưng sử dụng cho nhiều thẻ có tên class giống nhau.
+			Mỗi thẻ HTML có thể có 1 class hoặc nhiều class
+		4. Chọn thành phần cháu chắc:
+			Sử dụng "dấu cách" để chọn thành phần cháu chắc
+		5. Chọn thành phần con trực tiếp
+			Sử dụng dấu ">" để chọn thành phần con
+		6. Chọn nhiều điều kiện
+			"Viết liền" nhiều điều kiện (điều kiện VÀ)
+			sử dụng "dấu phẩy" (điều kiện HOẶC)
+		7. Chọn theo thuộc tính(attribute):
+			Sử dụng cặp dấu [tên thuộc tính = giá trị]
+			Ví dụ:
+				input [type='text']: chọn được thẻ input có thuộc tính type = 'text'
+		8. Chọn thành phần theo thứ tự bằng pseudo class:
+			: first-child => phần tử đầu tiên 
+			: last-child  => cuối cùng
+			: nth-child(x)=> thành phần thứ x
+				:nth-child(odd) => lẻ
+				:nth-child(even) => chẵn
+				:nth-child(2) => phần tử thứ 2
+				- sử dụng tham số n: cứ 3 cái lại có 1 cái color:red;
+					- n chạy từ 0 đến vô cùng
+					:nth-child(3n)
+			: not(SELECTOR) => không phải SELECTOR này
+			: is(SELECTOR) => là SELECTOR này
+		9. Các SELECTOR quan trọng khác	
+			|-------------------------------------------------------------------|
+			| SELETOR           | VÍ DỤ   | MÔ TẢ                               |
+			|-------------------------------------------------------------------|
+			| element + element | div + p | Chọn thẻ p đứng liền kề sau thẻ div |
+			| element ~ element | div ~ p | Chọn tất cả thẻ p đứng sau thẻ div  |
+			|-------------------------------------------------------------------|
+		===============================================
+	05.ĐỘ ƯU TIÊN CSS:
+		|----------------------------------------------------------------------------|
+		| SELECTOR                  | ĐIÊM          | GHI CHÚ                        |
+		|----------------------------------------------------------------------------|
+		| CSS internal and external |               | Cái nào mới hơn sẽ được ăn css |
+		|----------------------------------------------------------------------------|
+		| !important                | DƯƠNG VÔ CÙNG | Mạnh hơn cả in                 |
+		| CSS inline                | 1000          |                                |
+		| id                        | 100           |                                |
+		| class                     | 10            |                                |
+		| tag                       | 1             |                                |
+		| *                         | 0             |                                |
+		| selector giống nhau       |               | Xét cái nào có trước           |
+		|----------------------------------------------------------------------------|
+		!important dùng khi tạo ra class riêng lẻ có 1 thuộc tính để sài nhiều lần
+		Hoặc ghi đè CSS do không tìm ra được, hoặc vì muốn tiết kiệm thời gian =>Khó bảo trì sau này
+		chứ k sử dụng lung tung
+		===============================================
+	06.CSS VARIABLE:
+		- Sử dụng lớp giả:root để định nghĩa biến GLOAB vào bên trong
+		- Cú pháp đặt tên biến: --<tên biến>: <giá trị>;
+		- Sử dụng hàm var() để gọi biến ra sử dụng
+		- VÍ DỤ:
+			Trong file.css viết như sau:
+				:root{
+					--text-color: red;
+				}
+				h1{
+					color: var(--text-color);
+				}
+		Tác dụng => 
+			- Khi đặt màu chủ đạo cho website, sau này muốn đổi màu website chỉ cần sử tại biến "--text-color"
+			- Tái sử dụng nhiều lần
+		===============================================
+	07.CSS UNITS (ĐƠN VỊ KÍCH THƯỚC TRONG CSS):
+		7.1. Absolute units (đơn vị tuyệt đối):
+			- px: là một điểm ảnh, mỗi thiết bị sẽ khác nhau
+			- pt (point):
+				- Đơn vị có thể quy về cm (kích thước thật)
+				- Ngày xưa người ta thấy rằng màn hình chuẩn thời đó là 72px/ inch (1 inch = 2,75 cm)
+				- Người ta gọi đó là pot
+				- 1 point = 1/72 inch
+				- 1 inch = 2.54 cm
+				Tác dụng => Màn hình nào cũng 5cm
+							Lập trình cho điện thoại di động tốt
+							Ngón tay bấm nút button vừa vặn
+			- mm (milimet):
+				- Mới được hỗ trợ, do đó không nên dùng
+			- cm (centimet):
+				- Mới được hỗ trợ, do đó không nên dùng
+			=>  Không thay đổi, cho dù các yếu tố xung quanh thay đổi thì vẫn không có gì thay đổi
+				Ví dụ trình duyệt thay đổi => thì các kích thước absolute cũng không thay đổi
+			NOTE: 
+				Khi đi làm nên dùng px, bởi vì đây là tieu chuẩn của các tester và khách hàng
+				Khi làm cá nhân nên kết hợp thêm pt, để nâng cao trải nghiệm người dùng (UX)
+		7.2. Relative units (đơn vị tương đối):
+			Tất cả đơn vị Relative đều phụ thuộc vào kích thước của thẻ cha 
+			Mô tả phụ thuộc kích thước: Thẻ con > thẻ cha > body > html > Trình duyệt
+			Mặc định: body == html == trình duyệt
+			- %: phụ thuộc vào thẻ cha (chứa nó)
+			- em:
+				- Phụ thuộc vào thẻ gần nhất có thuộc tính font-size
+				- em == Font-size (2em == 2 lần Font-size)
+				Vận dụng =>
+					Thẻ p muốn hiển thị 3 dòng chữ thì sử dụng height =  3em;
+			- rem (root em):
+				- Phụ thuộc vào thẻ html
+				- rem == Font-size;
+				Vận dụng => 
+					Tăng giảm Font size của html/body thì tăng giảm tất cả kích thước của trang web
+			- vw (viewport-width):
+				- viewport được hiểu là khung nhìn - tức là trình duyệt
+				- vw là chiều rộng của trình duyệt
+				- 100vw = 100% chiều ngang trình duyệt
+			- vh (viewport-height):
+				- viewport được hiểu là khung nhìn - tức là trình duyệt
+				- vw là chiều cao của trình duyệt
+				- 100vh = 100% chiều cao trình duyệt
+			NOTE: thường sử dụng % và rem vw và vh
+		===============================================
+	08.CSS FUNCTION:
+		|------------------+---------------+------------------------------------------------------|
+		| FUNCTION         | MÔ TẢ         | TÁC DỤNG                                             |
+		|------------------+---------------+------------------------------------------------------|
+		| var()            |               | Gọi biến CSS                                         |
+		| liner-gradient() |               | Dải màu chuyển                                       |
+		| rgba()           |               | Màu RGB có hỗ trợ trong suốt tại tham số thứ 4       |
+		| rgb()            |               | Màu RGB                                              |
+		| calc()           | Hàm tính toán | calc(<biểu thức>)                                    |
+		|                  |               | Thường dùng để cộng relative units và absolute units |
+		| attr()           |               | Lấy giá trị của attribute của thẻ html               |
+		|------------------+---------------+------------------------------------------------------|
+		===============================================
+	09.CSS PSEUDO CLASS (Trạng thái: STATE)
+		- Là lớp giả
+		- Là trạng thái của ELEMENT khi ở 1 trạng thái nào đó
+		- chỉ gọi ra sử dụng chứ không tạo thêm lớp giả nào khác như pseudo emlement
+		| ------------ | ----------------------------------- |
+		| Trạng Thái   | Mô tả                               |
+		| ------------ | ----------------------------------- |
+		|::root       | Gọi chính thẻ gốc (html)            |
+		|::hover      | Khi di chuột vào                    |
+		|::active     | Khi bấm chuột vào                   |
+		|::forcus     | Khi bấm vào emlement(giống outline) |
+		|::last-child | ....                                |
+		|::check      | Khi CBB,RB đã check                 |
+		|::disable    | Khi emlement đang disable           |
+		|::selecction | Khi người dùng bôi đen              |
+		| ------------ | ----------------------------------- |
+		- Riêng thẻ link <a>
+		| ---------- | ------------------------------- |
+		| Trạng Thái | Mô tả                           |
+		| ---------- | ------------------------------- |
+		|::link     | Khi thẻ a có link               |
+		|::active   | Trang hiện tại = Link của thẻ a |
+		|::visited  | Trạng thái đã xem Link này chưa |
+		| ---------- | ------------------------------- |
+		===============================================
+	10.CSS PSEUDO ELEMENT:
+		- Tạo thêm một lớp giả
+		- Là Inline element trong đối tượng cha	
+		- Bắt buộc phải có "content: ' '; "
+		| -------------- | ---------------------------- |
+		| ::before       | Tạo thêm emlement ở đầu cha  |
+		| ::after        | Tạo thêm emlement ở cuối cha |
+		| ::first-letter | Chữ cái đầu tiên             |
+		| ::first-line   | Dòng đầu tiên                |
+		| ::selection    | Khi chọn dòng đầu tiên       |
+		| ::marker       | Định dạng stylelist cho list |
+		| -------------- | ---------------------------- |
+		Ví dụ áp dụng cho clearfix:
+			.clearfix::after{
+				content: " "; => bỏ dấu cách để cho chắc ăn trên all trình duyệt
+				clear: both;
+				height: 0; => để cho chắc ăn
+				display: block; => để element rộng 100%
+			}
+	11.CSS VALUES
+		- Tất cả các thuộc tính đều có 2 giá trị:
+			- initial: giá trị mặc định của trình duyệt
+			- inherit: Giá trị của cha
+		- Nhưng nguy hiểm cực kỳ vì không phải trình duyệt nào cũng hỗ trợ
+		- Sau này học Sass để viết CSS đã có biến. Do đó biến CSS là thật sự dư thừa
+PHẦN 02: DISPLAY (KIỂU HIỂN THỊ CỦA ELEMENT)
+	01. Block: 
+		- Rộng 100%
+		- Được phép đặt width, height
+			- h1-h6, section, Sidebar, footer, header, ul, ol, div, p...
+		Tác dụng =>  Làm nhiệm vụ tạo ra vùng chứa các thành phần khác
+	02. Inline: 
+		- Nằm trên cùng một hàng
+		- Được đối xử như Text
+
+		- Không thể đặt đặt width, height
+			- Nếu muốn đặt Chiều cao thì dùng: 
+				- Font-Size
+				- Line-height
+		- inline emlement => width :auto, tức là width == nội dung bên trong nó
+		- Margin chỉ được hai bên.
+		- input, button, label, span, a,...
+		- Khi inlne nằm cạnh block thì sẽ có khoảng cách do inline tạo ra so với black
+			=> Do đó cần chuyển inline về inline-block để cho nó có tính chất block
+	03. Inline Block
+		- Thừa hưởng tất cả các ưu điểm của 2 kiệu hiển thị trên
+			- Nằm trên cùng một hàng
+			- Có thể đặt chiều rộng và chiều cao cho nó
+		- thẻ img
+	Tóm tắt vấn đề => Block element không thể nằm trong Inline element. Còn các trường hợp còn lại thì vô tư.
+PHẦN 03: NHỮNG THUỘC TÍNH ẢNH HƯỞNG ĐẾN KÍCH THƯỚC ELEMENT
+	01. MÔ HÌNH HỘP CHỮ NHẬT (BOXMODEL):
+		Tất cả các element đều có chung một mô hình BoxModel:
+		- content: Nội dung của emlement - thành nằm trong nhất
+		- Padding: Vùng đệm - khoảng cách từ nội dung đến border
+		- Border: viền của element
+		- Margin: Khoảng lề - khoảng cách từ element hiện tại đến các element xung quanh - Không phải là lớp bao bọc element
+		=> Tổng không gian chiếm chỗ của emlement
+			element = content - padding - border
+		Tóm tắt vấn đề =>  
+			- Tất cả các element trên Website đều là hình hộp chữ nhật
+			- Học cái này để điều khiển được element
+		===============================================
+	02. RESET CSS:
+		- Mỗi trình duyệt có những giá trị mặc định khác nhau, nên cần Reset CSS để đồng bộ tất cả:
+			*{
+				margin: 0;
+				padding: 0;
+				border: 0;
+				outline: none;
+				box-sizing: border-box;
+			}
+			=> Lúc này tất cả các element sẽ xít xác vào nhau
+		
+		===============================================
+	03. WIDTH, HEIGHT:
+		Chiều rộng và chiều cao của emlement
+	03. PADDING:
+		- padding: [các giá trị cách nhau bằng dấu cách];
+			- 1 giá tri: 4 bên
+				+ Nhưng 1 giá trị mà đơn vị nó là %
+				+ Padding: 50%; thì là 50% chiều rộng của chính nó;
+				Vận dụng => 
+					+ Đặt Padding top 50% để kích thước emlement là (100%-50%): rộng 100 cao 50
+					+ Sau đó đặt Background Bởi vì Backgroud-origin (mặc định) là padding-content nên hình nền sẽ đổ từ padding vào
+			- 2 giá trị: Trên dưới - trái phải
+			- 3 giá trị: Trên - 2 bên - dưới 
+			- 4 giá trị: Trên - phải - dưới - trái (theo chiều kim đồng hồ);
+		- padding-top: <giá trị>;
+		- padding-right: <giá trị>;
+		- padding-bottom: <giá trị>;
+		- padding-left: <giá trị>;
+		Đối với Text có background thì nên đặt padding cho nó thay vì width, height
+	04. BORDER: 
+		- boder: [độ dày] [kiểu] [màu];
+			- [độ dày]: 
+			- [kiểu]: 
+				- soild: nét liền 
+				- dashed: ------
+				- dotted: ......
+			- [màu]:
+		- border-width: [các giá trị cách nhau bằng dấu cách]
+		- ...
+		- border-top: [độ dày] [kiểu] [màu];
+		- ...
+		- border-top-width: 12px;
+		- ...
+		Tương tự với:
+		- border-style:
+		- border-color:
+	05. MAGRIN: 
+		- magrin: [các giá trị cách nhau bằng dấu cách];
+			- 1 giá tri: 4 bên
+			- 2 giá trị: Trên dưới - trái phải
+			- 3 giá trị: Trên - 2 bên - dưới 
+			- 4 giá trị: Trên - phải - dưới - trái (theo chiều kim đồng hồ);
+		- magrin-top: <giá trị>;
+		- magrin-right: <giá trị>;
+		- magrin-bottom: <giá trị>;
+		- magrin-left: <giá trị>;
+		=> chỉ ảnh hưởng đến thành phần Block and Inline-Block
+	06. BOX-SIZING: 
+		Cách mà trình duyệt tính toán kích thược element
+		- box-sizing = "content-box";
+			- giá trị mặc định
+			- width và height: tính từ phần nội dung tính vào
+		- box-sizing = "border-box";
+			- width và height: tính từ phần border tính vào
+	07. DISPLAY:
+		- block
+		- inline
+		- inline-block
+		=> Quan trọng vì quyết định kích thước của element
+	08. MAX-WIDTH/MAX-HEGHT:
+		- Sử dụng khi muốn đặt chiều rộng tối đa
+PHẦN 04: NHỮNG THUỘC TÍNH ẢNH HƯỞNG ĐẾN VỊ TRÍ CỦA ELEMENT:
+	01. KIẾN THỨC CẦN BIẾT:
+		- Tất cả element trên trang Web luôn có xu hướng trồi lên phía trên và sang bên trái(cao nhất có thể)
+		- Kiến thức về display
+	02. float:
+		- Đẩy một element sang trái hoặc sang phải
+		- Khi đặt float thì width thành auto bởi vì nó thành inline element
+			Giải pháp => Đổi display: inline-block để có thể control được width/height do tính chất block
+		- Dùng hàm calc() - CSS FUNCTION để chia chính xác width: calc(100% - 250px); 
+		Sử dụng clear: dùng để clear float để vùng được clear không bị ảnh hưởng
+			- left: bên trái
+			- right: bên phải
+			- both: cả hai bên
+		Hoặc sử dụng overflow: hidden; cho thành phần cha - Thành phần bị sập độ cao
+		Vận dụng => 
+			- Chia layout 2 cột: Nên đặt 1 float left - 1 float right
+			- Chia layout >= 3 cột: tất cả nên float left
+				- 2 bên fix cứng, để giữa display block tự auto width
+	03. POSITION:
+		- relative: (vị trí tương đối)
+			- Lấy chính nó làm góc tọa độ
+			- Không phụ thuộc vào đối tượng nào cả
+		- absolute: (vị trí tương đối)
+			- Lấy thành phần cha gần nhất có thuộc tính position làm gốc tọa độ để dựa vào;
+			- Không quan trọng giá trị của position là gì cả, nhận làm cha luôn;
+		- fixed:
+			- Dính vào trình duyệt
+			- Lấy trình duyệt làm gốc tọa độ
+		- sticky: 
+			- Hoạt động kết hợp với scroll
+			- Lên được top thì không bị trôi xuống nữa, dính hẳn lên top
+		NOTE: 
+			- Tất cả position phải có top right bottom left mới hoạt động
+			- cặp đôi phải huyền thoại đi chung với nhau relative/absolute
+				Đặt: - relative: cho thành phần cha để làm gốc tọa độ
+					 - absolute: cho thành phần con để tuyêt đối theo gốc tọa độ gần nhất
+	04.FLEX: (FLEXIBLE -LINH ĐỘNG - LINH HOẠT)
+		LINK THAM KHẢO : https://codepen.io/enxaneta/full/adLPwv/
+		- Tổng kích thươc của thành phần con không bao giờ vượt qua kích thước của thành phần cha
+		4.1 Thành phần cha:
+			- Đặt cho thành phần cha => "display: flex;"
+			- Xắp xếp thành phần con theo hàng ngang (tức là theo trục "flex-direction")
+			- flex-direction:
+				- Xác định chiều trục chính của flex
+				- Mặc định: row => xếp theo trục main (chiều ngang)
+				- row-reverse: xếp theo trục main (chiều ngang) && đảo chiều trục main 
+				- column: xếp theo trục main (chiều dọc)
+				- column-reverse: xếp theo trục main (chiều ngang) && đảo chiều trục main 
+				NOTE : Đảo chiều trục là gì? Là hoán vị Star và End cho nhau
+			- flex-wrap:
+				- Bao bọc con
+				- nowrap : mặc định
+				- wrap :nếu thiếu chỗ thì xuống dòng, flex-shrink lúc này không còn ý nghĩa nữa 
+				- wrap-reverse : thiếu chỗ thì lên dòng, ngược lại so với wrap, bản chất là đổi chiều trục cross
+			- justify-content: canh chỉnh các element theo chiều trục main
+				- center
+				- flex-start: Khởi đầu của flex (mặc định)
+				- flex-end: dồn hết về cuối trục "flex-direction"
+				- space-between: Khoảng trắng ở giữa
+				- space-around: Khoảng trắng xung quanh (2 mép < 1/2 khoảng cách gi)
+				- space-evenly : Mọi khoảng trắng xung quanh bằng nhau
+			- align-items: canh chỉnh các element theo chiều trục cross
+				- center
+				- flex-start: (mặc định)
+				- flex-end: dồn hết về cuối trục main(flex-direction)
+				- baseline: Canh theo đường baseline (đường giữa emlement == height element/2)
+				- stretch : Dính top item lên crosss star && Dính bottom item lên cross end 
+			- align-self: như align-items nhưng viết ở thành con
+		4.2 Thành phần con:
+			- flex-grow ( Khi cha thừa thì con lớn lên ): 
+				- flex-grow: <một con số>;
+				- Đặt thuộc tính này ở phần tử com
+				- Tỉ lệ chia kích thước cho phần tử con  == khoảng trống còn thừa trên thành phần cha;
+				- Tính theo chiều của "flex-direction"
+			- flex-shrink ( Khi cha thiếu thì con nhỏ lại ): 
+				- Tỉ lệ chia kích thước cho thành phần con; 
+			- flex-basis:
+				- Không có cũng được (Optinal)
+				- Thay thế cho thuộc tính height/width cho element
+				- Là kích thước tối thiểu của element theo trục của direction
+				- Chính Là width nếu "flex-direction: row"
+				- Chính là height nếu "flex-direction: column"
+			- order:
+				- sắp xếp thứ tự của phần tử flex
+				- order: <một con số>;
+			- justify-self:
+				- canh chỉnh các element theo trục (giống justify-content nhưng viết ở thành phần con để align chính nó)
+					- center
+					- flex-start: (mặc định)
+					- flex-end: dồn hết về cuối trục cross(flex-direction)
+			- align-self: 
+				- canh chỉnh các element theo trục (giống align-items nhưng viết ở thành phần con để align chính nó)
+				- center
+				- flex-start: (mặc định)
+				- flex-end: dồn hết về cuối trục main(flex-direction)
+			=> SHORTHAND : 
+				flex: flex-grow [flex-shrink] [flex-basis];
+				Flex : <number>; => tức là : flex-grow == flex-shrink == <number> && flex-basis: auto;
+				Flex-flow : <flex-decoration> <flex-wrap>; 
+PHẦN 05: ALIGNMENT, ẨN MỘT THÀNH PHẦN:
+	01. ALIGNMENT
+		- Block:
+			- Canh trái: Mặc định (Margin-right: auto;)
+			- Canh phải: Margin-left: auto;
+			- Canh giữa:
+				Margin-left: auto;
+				Margin-right: auto;
+				Chính là Margin: 0 auto;
+		- Inline:
+			- Xếp 1 hàng giống như text
+			- Text-align: left/right/center ; 
+				Đặt ở cha hoặc con đều được khi canh text, bởi vì: text-align đặt ở thẻ cha có tính chất kế thừa,nên thẻ con sẽ nhận được thuộc tính đó
+			-line-height:
+				+ canh giữa chiều dọc thì line-height == chính height thẻ cha
+				+ Có tính chất kế thừa, nên thẻ con sẽ nhận được thuộc tính đó
+				=> 	Nhớ là đặt cho thành phần cha
+					Người mới khó Nhớ
+	02. ẨN MỘT THÀNH PHẦN:
+		|----------------------------------------------------|
+		| Thuộc Tính | Giá Trị | Tác Dụng                    |
+		|----------------------------------------------------|
+		| display    | none    | biến mất luôn               |
+		| visibility | hidden  | ẩn đi, nhưng vẫn chiếm chỗ  |
+		| opacity    | 0       | ẩn đi, nhưng vẫn click được |
+		|----------------------------------------------------|
+PHẦN 06: BACKGROUND
+	01. Kiến thưc về Backgroud trong CSS:
+		- Background không phải là ảnh, không có giá trị nội dung
+		- Ảnh sản phẩm không thể đặt là div có background-image,vì không đúng về mặt ý nghĩa
+			+ Ảnh thể hiện nội dung
+			+ Còn hình nền (background) không có giá trị về nội dung cho GG đánh giá SEO
+		- Nên đặt background-color kèm với background-image
+		- Bộ ba color-image-size luôn đi chung
+	02. Background-color: 
+		- màu nền
+	03. Background-image: url(),url(),url();
+		- Hình nền
+		- Nằm trên màu nền
+		- Nhiều hình nền sử dụng dấu phẩy để ngăn cách
+			+ Hình nào đứng trước thì nằm trên
+			+ Kết hợp dải màu chuyển linear-gradient();
+	04. Background-clip: định nghĩa vùng màu nền là vùng nào
+		- Đi kèm với background-color
+		- border-box: background đổ từ border vào trong (mặc định)
+		- padding-box: background đổ từ padding vào trong
+		- content-box: background đổ từ padding vào trong
+	05. Background-origin: định nghĩa vùng màu nền là vùng nào
+		- Đi kèm với background-image
+		- border-box: background đổ từ border vào trong 
+		- padding-box: background đổ từ padding vào trong (mặc định)
+		- content-box: background đổ từ padding vào trong
+	06. Background-size 
+		- 1 giá trị: 100px 
+			=> width 100px, height auto
+		- 2 giá trị: width - height 
+			=> không nên để, hình nền sẽ bị nén
+		- cover: zoom to ra cho vừa với div và bị cắt đi
+		- contain: zoom nhỏ lại và không bị cắt bớt
+	07. Background-repeat:
+		- repeat: lặp (mặc định)
+		- no-repeat: không lặp
+		- repeat-x: lặp theo trục x
+		- repeat-y: lặp theo trục y
+	08. Background-position: 
+		- tùy chỉnh của vị trí của ảnh nền
+		- Background-position: 10% 50px;
+			=> Cách left 10% phần tử cha, cách top 50px;
+		- Background-position: top right;
+			=> Đặt ảnh ở gốc top right;
+		- Background-position: top 10px right 50px;
+			=> Đặt ảnh cách top 10px, right 50px;
+
+	TIẾT KIỆM DUNG LƯỢNG CỦA BACKGROUND => Liên quan tới tốc độ LOAD của trang 
+		- Vận dụng background-color và background-image và cắt bớt ảnh
+	=> SHORTHAND: Quan trọng vị trí
+		background: red url() center center/cover no-repeat;
+					[màu][ảnh][lặp][position]
+		background-size không có trong shorthand
+PHẦN 07: TEXT
+	01. KIẾN THỨC CẦN BIẾT:
+		- Chữ: 
+			Máy tính không hiểu chữ, khi gõ chữ thì máy tính phân tích thành số
+			A => 1000101010 khi lưu chữ A, chữ A lúc hiển thị chúng ta nhìn thấy là hình ảnh, Font chữ: tập hợp của các cái ảnh của các chữ cái
+		- Dòng chữ (line):
+			- là các hình chữ nhật, các ảnh chữ được xếp xác nhau
+			- text
+	02. CÁC THUỘC TÍNH
+		- line-height: độ cao của dòng chữ
+			- Muốn canh giữa theo chiều dọc thì phải dùng line-height nhé
+			- chính là height của text
+		- Font-size: cỡ chữ, đọ cao của chữ cái
+		- letter-spacing: khoảng cách giữa các chữ cái
+		- word-spacing: Khoảng cách giữu 2 từ (chính là dấu cách)
+		- text-indent: Khoảng cách lề bên trái
+			Vận dụng => làm biến mất chữ (-1 triệu px) cho nút button
+		- text-align: canh chỉnh đối tượng text và tất cả các inline element
+			- center: canh giữa
+			- left: sang trái 
+			- right: sang phải
+			=> ở CSS nó sẽ đối xử với inline element
+		- text-decoration: trang trí chữ
+			- underline: gạch chân
+			- line-throungh: gạch ngang 
+		- text-transform:
+			- uppercase: HOA
+			- lowercase: thường
+			- capitalize: viết Hoa các chữ cái đầu tiên của từ
+		- color: màu chữ
+PHẦN 08: FONT CHỮ TRÊN TRANG WEB
+	- Khi gõ chữ "a" thì sẽ có một hình chữ a hiện ra, được đóng gói bởi người thiết kế 
+	- Font-family: [Danh sách các Font], sans-serif;
+		Sans-serif là Font mặc định để vào cho an toàn
+	- Các loại Font:
+		- Font trên máy:
+			- Tốc độ nhanh
+			- Nguy hiểm bởi vì không chắc người dùng có Font đó
+			- Website phải chắc chắn hiển thị được
+		- Font Online (Web Font):
+			- Phải tải về => chậm
+			- Bị chuyển Font đột ngột
+			- Đẹp
+			- Website nặng 
+	ĐỊNH NGHĨA MỘT FONT CHỮ:
+	- @Font-face: Định nghĩa một Font chữ
+		@font-face{
+			font-family: TenTuDinhnghia,sans-serif;
+			src: url(./thumuc/file.TTF);
+		}
+	- Font Icon:
+		- Fontawesome cnd
+		- Là chữ được định nghĩa thành Icon
+	- Font-size: 
+	- Font-weight: [100-700/bold...];
+		- normal: 400
+PHẦN 09: KIẾN THỨC VỀ HÌNH ẢNH:
+	01. PHÂN LOẠI HÌNH ẢNH:
+		- JPG: Dạng ảnh nén (ảnh chụp ngoài cuộc sống)
+			- Dung lượng nặng hơn PNG
+			- Nhiều px không cùng màu
+			- Không hỗ trợ transparent (trong suốt)
+		- PNG: Được vẽ dạng đồ họa
+			- Nhẹ hơn JPG
+			- Có những vùng màu riêng biệt
+			- Hỗ trợ trong suốt
+		- SVG: Là ảnh vector, ảnh dạng code
+			- Cực kì Nhẹ
+			- Không sử dụng ảnh chụp được
+			- Phóng to không bị vỡ
+			- Hỗ trợ trong suốt
+			- Phóng to không bị vỡ
+			- Không phải chờ load ảnh
+		- GIF:
+			- Nhẹ hơn PNG
+			- Ít màu hơn
+			- Hỗ trợ trong suốt nhưng kém hơn PNG, vì bị răng cưa
+			- Hỗ trợ ảnh động
+		- WEBP:
+			- Nhẹ hơn 
+			- có ưu điểm của JPG,PNG
+			- GG hỗ trợ, Nhưng không phải trình duyệt nào cũng hỗ trợ
+				=> Ít dùng
+		- BMP:
+			- Nặng
+			- Không trong suốt
+			- Ít khi sử dụng, thường làm Auto Game bằng hình ảnh
+		- Data-url:
+			- Dạng code 
+			- Lợi ích không bao giờ chết ảnh
+			- Không phải chờ load ảnh
+			- Tốc độ trang html bị nặng lên do load cả ảnh
+	02. CSS CHO HÌNH ẢNH:
+		- Thẻ img là thẻ inline-block
+		- img ở phần nội dung, do người dùng soạn thảo:
+			- Luôn Luôn đặt thuộc tính max-width: 100%; cho phần tử cha bao bọc ảnh
+			- Giả sử như: 
+				- Trang Blog người dùng upload bài viết blog từ trang quản trị, nhưng chúng ta không biết ảnh đó kích thước bao nhiêu, do đo nên đặt max-width 100%
+				- Vì Nội dung của họ viết tự do, ảnh - text 
+			- Muốn có lợn nhất cho SEO(trải nghiệm người dùng) nên đặt width và height (nếu biết trước thì nên đặt)
+				Tác dụng => load ảnh => bị nhảy giao diện
+			- BackEnd Đọc thông tin của ảnh => xuất ra HTML => tốt nhất, ngon nhất
+PHẦN 10: TRANSITION:
+	- Khi một emlement có sự thay đổi về thuộc tính nào đó, thì sẽ xảy ra transition
+	- Là chuyển tiếp/ chuyển động giữa 2 state (Trạng thái)
+		- Có 2 móc thời điểm:
+			- Bắt đầu
+			- Kết thúc 
+	-Cú pháp:
+		Transition: [tên thuộc tính] [tốc độ] [thời gian];
+			- [Tên Thuộc tính]: (transition-property: width;)
+				- thuộc tính có sự thay đối
+				- Không phải tất cả thuộc tính đề transition được
+				- Chỉ dùng được cho thuộc tính đếm được bằng đơn vị đo
+			- [tốc độ]:(transition-timing-function: ease;)
+				- ease: Chậm - nhanh - Chậm
+				- linear: Bắt đầu bằng kết th
+				- ease-in: Bắt đầu chậm
+					Tác dụng => có 1 cái hộp từ Website bay đi, thì bay càng nhanh rồi mất vút
+				- ease-out: kết thúc chậm
+					Tác dụng => có 1 cái hộp từ xa bay vào, thì dùng cái này để phanh hộp lại
+				=> Ảnh hượng tới UX (trải nghiệm người dùng)
+			- [thời gian]: (transition-duration: 2s;) 
+				- thời gian xảy ra transition(chuyển động)
+		Transition-delay: 3s;
+			- Đợi 3s sau đó mới run transition
+	- Nếu nhiều transition thì cứ dùng dấu phẩy
+PHẦN 11: CÁC THUỘC TÍNH PHỤ CSS:
+	- style cho table:
+		- Luôn có thuộc tính border = "1"
+		- border-collapse: collapse ;
+			Tác dụng => để boder 1 dòng 
+	- text-shadow: viền mờ của chữ
+		text-shadow: h-shadow v-shadow blur-radius color|none|initial|inherit;
+	- letter-spacing: khoảng cách các kí tự
+	- word-spacing: khoảng cách giữa các kí tự
+	- transform: rotate(45deg);
+		- Xoay emlement bao nhiêu độ;
+	- shadow:
+		- box-shadow: Bóng mờ bên ngoài
+			- box-shadow: [trái-phải] [trên-dưới] [độ mờ xung quanh] [màu];
+			- box-shadow: 1px 2px 3px black;
+		- text-shadow: Bóng mờ của text
+			Vận dụng => Làm rõ chữ, mềm chữ
+		- Nhiều shadow thì dùng dấu phẩy (đổ bóng 3,4 bên)
+			Vận dụng => Trang trí
+		=> không ảnh hưởng đển kích thước emlement
+	- border-radius: <0xp/ % của chiều rộng>;
+		- 1/2/4 giát trị;
+		- bo góc 
+	- color: màu chữ
+		- Từ tiếng Anh 
+		- rgb
+		- rgba(): màu có độ trong suốt
+		- transparent:màu trong suốt
+	- border là có thể tạo ra hình tam giác: Khi boder 4 bên khác màu và dày 30px sẽ thấy rõ
+		stype{
+			width 0
+			height 0
+			...
+		}
+	- tooltip
+	- overflow: khi con vượt quá cha
+		- overflow-x
+		- overflow-y
+			- auto: trình duyệt quyết định
+			- scroll: thanh cuộn
+			- hidden: quá là cắt mất
+	- outline: đường viền xung quanh đường viền
+		- Đường viền mặc định của trình duyệt
+		- Nằm ngoài border
+		- none để bỏ;
+	- object-fix:
+			- cover
+			- Kết hợp width/height để fix chiều cao cho img
+		- kết hợp với width/height
+	- object-position: [giá trị 1][giá trị 2];
+		- vị trí bắt đầu của object
+	- cursor: pointer; con trỏ chuột
+	- user-select: none; khoong cho phép copy
+	- will-change: opacity transform;
+		Khai báo chuyển đổng của animation để trình duyệt tối ưu
+PHẦN 12: MEDIA QUERY:
+	- Cách để định dạng cho nhiều kích thước màn hình
+	- Là cơ sở để làm Reponvite
+	- CÓ 2 CHẾ ĐỘ :
+		+ screen là trang trên máy
+		+ print là khi in ra giấy trắng đen
+
+	@media screen and (<điệu kiện 1>) and (<điệu kiện 2>){
+		....
+	}
+	VÍ DỤ:
+	//trên 800px thì ăn css, nhỉ hơn thì không
+	@media screen and (min-width:800px){
+		div{
+			background-color: green;
+		}
+	}
+	// từ 800-1000px thì ăn css
+	@media screen and (min-width:800px)and (max-width:1000px){
+		div{
+			background-color: green;
+		}
+	}
+
+	Danh sách Break point:
+		Màn hình hình cực lớn > 1200
+		Màn hình trung bình > 960
+		Màn hình nhỏ > 768
+		Màn hình cực nhỏ < 768
+		=> chia làm 3 loại cơ bản
+			+ Destop
+			+ Tablet
+			+ Mobile
+		=> F8 {
+			PC: >= 1024 px
+			tablet : >= 740px and < 1024px
+			Mobile < 740px{
+				Trên mobile ngón tay muốn bấm được phải cao 42-48px là vừa đẹp
+			}
+		}
+	Reponsive theo 2 hướng
+		- Destop-first
+			- break point nhỏ dần
+			- Sử dụng thuộc tính max-width
+		- Mobile-first
+			- break point tăng dần
+			- Sử dụng thuộc tính min-width
+	=>{
+		sử dụng đơn vị em 
+		đầu tiên sử dụng đơn vị px sao đó covert sang em để không bị lỗi trên nhiều trình duyệt
+	}
+PHẦN 13: GỌI TÊN THÀNH PHẦN WEBSITE
+	1. Header
+		- Phần đầu của Website
+		- Có logo
+	2. Navigation
+	- Phần điều hướng chính trang Website 	
+		- Có thể nằm trong header
+	3. Breadcrumb
+		- Chỉ cho ta biết là đang ở đầu
+		- Trang chủ > Danh sách bài học
+	4. Sidebar
+		- Là SubNavigation
+		- Thường là menu bên trái /phải
+		- Miễn là thành phần nằm về một phía là sidebar
+	5. Slider
+		- Phần trình diễn trượt ngang dọc
+		- Thường là hình Ảnh
+	6. Content:
+		- Thành phần nội dung chính của Website 
+		- Trung tâm của Website
+			- giới thiệu về trang web	
+				+ Tên thương hiệu
+				+ Câu Slogent đi kèm với thương hiệu
+			- desc (mô tả)
+	7. Banner:
+		- Là hình Ảnh
+		- Thường được hiểu là quảng cáo
+	6. Footer:
+		- Chân trang
+PHẦN 14: NGUYÊN TẮC THIẾT KẾ 1 WEBSITE
+	1. CẤU TRÚC THỰ MỤC
+	2. XÂY DỰNG LAYOUT (CSS KÍCH THƯỚC, VỊ TRÍ)
+		1. THỨ TỰ LÀM VIỆC
+			Từ tổng quan đến chi tiết
+			Từ trên xuống dưới
+			Từ trái sang phải
+			Từ ngoài vào trong
+			
+		2. ĐẶT CÂU HỎI:
+			1. Kích thước (height)
+			2. Vị trí
+			3. Màu săc
+			4. Kiểu dáng (Trang trí,hình tròn, vuông...)
+	3.
+	Thẻ chứa toàn bộ Website nên đặt tên là : app/main/wapper
+	Thẻ header đặt là .header
+	Thẻ chứa phần nội dung chính Website đặt là .container 
+	Thẻ footer đặt là .footer
+PHẦN TIÊU CHUẨN BEM:
+	- Là viết tắt của Block Element Modifier
+		+ Block là cha
+		+ Element là con của cha
+		+ Modifier là bổ sung ý nghĩa cho "Block" hoặc "Element"
+	- Tác dụng : Không trùng tên class, làm việc nhiều người
+	- Cú pháp :
+		.Block
+		.Block__Element
+
+		.Block--Modifier
+		.Block__Element--Modifier
+	- TRƯỜNG HỢP BLOCK LỒNG NHAU:
+		+ Là thành phần dùng chung : thì dùng thẳng luôn không thuộc block đó nữa
+		+ Block con chứa nhiều element && không phải là thành phần dùng chung 
+			+ Tách thành block mới luôn
+	- LINK THAM KHẢO: 
+		Lever 1: https://codepen.io/ng-ngc-sn-the-bashful/pen/VwKXNyK
+TRICK:
+	Nên đặt để chắc ăn hơn
+		body,html{
+			height: 100%;
+			width:100%;
+		}
+BÀI TẬP:
+	Thực hành làm giao diện 2 cột, 3 cột
+	Thực hành xây dụng lauyout baogiaothonng.com (dùng float hoặc flex)
+	Thực hành xây dụng lauyout nhaccuatui.com (dùng float hoặc flex)
+	Thực hành làm Onepage BAND trên F8 CSS
+LỊCH HỌC:
+	Xong 13/10
+	Xong 15.10
+THỰC HÀNH:
+	01. BUTTON
+		Kiến thức:
+			- Thường sử dụng 3 thẻ để CSS thành button : a, button, div tùy vào từng trường hợp
+			- Độ dày của button không nên dùng width/height để CSS bởi vì nó biến button của chúng ta có thước tuyệt đối không tái sử dụng được. Sử dụng padding để đệm thêm kích thước cho button, chữ dài thì button dài ra, ngắn thì tự ngắn lại
+				.bnt{
+					padding: 10px 30px;
+				}
+			- Bo tròn button thì dùng 
+				.bnt{
+					boder-radius: 10px;
+				}
+			- Nếu 2 button nằm cạnh nhau : thì đẩy nó ra xa nhau
+				CSS bằng selector "+"
+				.btn + .btn{
+					margin: 16px; 
+				}
+			- Một button sẽ có ít nhất 2 trạng thái:
+				Viết ở .bnt
+				+ Enable : Được phép bấm vào
+					+ cursor : pointer;
+					+ hover effect: 
+						+ Không nên tìm 1 mã màu khác. 
+						+ Mà dùng opacity : 0.8; để làm mờ đi 0.2
+						+ Dùng transition: opacity 0.2s linear; để chuyển màu ngon hơn
+				+ Disable : Không được bấm vào, phải là mạnh nhất
+					+ opacity: 0.5 !important; || đổi thành màu xám #333
+					+ cursor: default !important; 
+			- Một button nên có 3 size:
+				.bnt--size-s{} là sizes small
+				.bnt--size-m{} là sizes medium
+				.bnt--size-l{} là sizes lagre
+				=> Giảm padding xuống phải là !important
+			- Một button nên có chiều rộng tối thiểu
+				.bnt{ Min-width: 100px;}
+			- Một button cần có màu khác nhau
+		- Nếu dùng thẻ div: 
+			+ Mặc định là display: Block; nên kế thừa 100% chiều ngang của trình duyệt 
+				=> đổi thành display : inline-Block ; để vừa nằm trên một hàng, vừa canh chỉnh được kích thước của emlement
+		- Nếu dùng thẻ a :
+			+ Mặc đinh thẻ a có text-decoration : underline;
+				=> đổi thành text-decoration: none;
+		- Nếu dùng thẻ button:
+			+ Mặc định có background-color : #333; xám xám thì phải
+				=> đổi thành background-color : transparent; (trong suốt)
+			+ Mặc định có outline 
+				=> đổi thành outline: none; 
+	02. Toast message
+		
+
+

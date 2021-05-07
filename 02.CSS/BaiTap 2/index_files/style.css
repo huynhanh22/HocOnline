@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+li {
+    list-style: none;
+}
+
+input,
+button {
+    outline: none;
+}
+
+body {
+    padding: 20px;
+}
+
+.clearfix::after {
+    content: " ";
+    clear: both;
+    height: 0;
+    display: inline-block;
+}
+
+
+/* MENU */
+
+ul#menu {
+    background-color: rgba(255, 89, 60, 0.644);
+    border-radius: 5px;
+    width: 700px;
+    z-index: 1;
+    margin: 0 auto;
+    position: relative;
+}
+
+ul#menu li:hover {
+    background-color: rgb(255, 88, 60);
+}
+
+ul#menu>li {
+    display: inline-block;
+    padding: 20px;
+    border-left: 1px solid white;
+}
+
+ul#menu>li>a {
+    color: aliceblue;
+    text-transform: capitalize;
+    line-height: 15px;
+    font-size: 23px;
+    display: inline-block;
+}
+
+ul#menu>li>a>i {
+    padding-right: 6px;
+}
+
+
+/* FORM */
+
+
+/* CHIA LAUOUT */
+
+#box-left {
+    width: 60%;
+    height: 100px;
+    float: left;
+}
+
+#box-right {
+    width: 40%;
+    height: 100px;
+    float: right;
+}
+
+form#form-subscribe {
+    background-color: orange;
+    width: 420px;
+    margin-top: 25px;
+    padding-left: 90px;
+}
+
+#form-subscribe h3 {
+    padding-top: 10px;
+    color: white;
+    font-weight: 500;
+}
+
+#form-subscribe input {
+    height: 30px;
+    width: 243px;
+    margin-top: 11px;
+    text-indent: 14px;
+    line-height: 20px;
+}
+
+#form-subscribe button {
+    width: 112px;
+    margin: 11px 0;
+    line-height: 38px;
+    background: #ff0531;
+    text-transform: uppercase;
+    color: white;
+}
+
+
+/* LOGIN */
+
+#form-login {
+    background: #383435;
+    margin-top: 25px;
+    padding-left: auto;
+    text-align: center;
+    padding: 100px 0 100px 0;
+    width: 550px;
+}
+
+#form-login input {
+    text-indent: 80px;
+    height: 30px;
+    width: 243px;
+    margin-top: 11px;
+    text-indent: 14px;
+    line-height: 20px;
+}
+
+#form-login button {
+    display: block;
+    margin: 10px auto;
+    width: 243px;
+    text-transform: uppercase;
+    line-height: 40px;
+    font-weight: 500;
+    color: white;
+    background-color: rgb(228, 70, 97);
+}
+
+#form-login a {
+    color: white;
+}
+
+
+/* CHIA LAYOUT */
+
+.left {
+    float: left;
+}
+
+.right {
+    float: left;
+}
+
+.bnt {
+    margin-top: 20px;
+    width: 124px;
+    font-size: 20px;
+    line-height: 39px;
+    border: none;
+    color: white;
+    text-align: center;
+    background-color: blue;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+    margin-right: 20px;
+}
+
+.bnt-radius {
+    border-radius: 16px;
+}
+
+#left a,
+#right a {
+    color: white;
+}

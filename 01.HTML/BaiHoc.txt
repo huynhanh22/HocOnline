@@ -1,0 +1,183 @@
+VÍ DỤ CƠ BẢN:
+	Khi truy cập vào Google.com bằng trình duyệt bất kì (Client) 
+		thì: 
+			+ Những trình duyệt sẽ gửi một Request đến máy chủ (Sever)
+			+ Máy chủ Xử lý( Cái gì sẽ xử lý ??? => PHP, NodeJS, Java, .NET, ...)
+			+ Máy chủ trả về HTML => trình duyệt
+			+ Trình duyệt đọc code HTML => Hiển thị ra trang web cho người dùng nhìn thấy
+	Trình duyệt không biết đọc hình ảnh, văn bản, âm thanh mà chỉ đọc code HTML rồi hiển thị ra.
+================================================================================================
+Thẻ có cách nói khác là Tag, khi các thẻ được trình duyệt “đọc” và render ra giao diện website thì có thể gọi các thẻ là các “phần tử” hay các “elements”
+================================================================================================
+NỘI DỤNG CHÍNH:
+	HTML là ngôn ngữ đánh dấu siêu văn bản
+	Tất cả các trang web đều được viết bằng HTML.
+	Đặt trưng của HTML là các thẻ
+	Có thẻ mở và thẻ đóng.
+	Ở trong lập trình có 2 loại kí tự:
+		+ Bình thường
+		+ White Space (không nhìn thấy): 
+			+ Tab
+			+ Xuống dòng(Enter) 
+			+ Space(dấu cách)...
+			=>Trong HTML White Space được bỏ qua. Tức là White Space không có ý nghĩa đối với HTML
+================================================================================================
+CẤU TRÚC CƠ BẢN CỦA MỘT TRANG HTML
+	<!DOCTYPE html>
+	<html>
+		<head>
+			<title></title>
+		</head>
+		<body>
+			//Chúng ta chủ yếu viết code ở đây
+		</body>
+	</html>
+================================================================================================
+TÌM HIỂU CÁC THẺ THÔNG DỤNG HTML
+	+ <!DOCTYPE html>	
+		Này để báo cho Sever biết đây là tài liệu HTML và sẽ được tất cả các trình duyệt hiểu hết. 
+		Chúng ta cũng chẳng cần quan tâm nó. Có cũng được không có cũng được, nhưng nên có để cho chắc ăn là được hỗ trợ đầy đủ.
+	+ <html> : Nội dung bên trong trang HTML
+	+ <head> : Chứa các thông tin phụ, kết nối để cho các trang Web khác hiểu...
+		+ <title> : Tiêu đề của trang Web 
+		+ <meta> : 
+			Phải học dần, là thanh Status của điện thoại hoặc chia sẻ lên FB. Mỗi trang Web có quy định khác nhau nên phải tự mò. Không ảnh hưởng quá nhiều đến trang Web của mình
+			quan trọng: 
+				<meta name="viewport" content="width=device-width, initial-scale=1">
+					+ viewport là muốn nói đây là những gì ta nhìn thấy, cho phép zoom
+					+ width=device-width : độ rộng trang Web = độ rộng của thiết bị
+					+ initial-scale : độ phóng to thu nhỏ = 1 (tức là Zoom 100%)
+				<meta content = 'index , follow' name = 'robots'>
+					+ Cho phép GG truy cập và đọc thông tin của website
+				<meta name = 'theme-color' content = '#ffffff'>
+					+ Màu của thanh Statusbar trên điện thoại di động
+				<meta property = 'og: image' content = 'link hình ảnh'>
+					+ Khi chia sẻ thì có ảnh đại diện kèm theo
+					=> og : => FB quy định thẻ này
+				<meta id="metaDescription" name="description" content="Nội dung hiển thị khi người dùng GG">
+				<meta charset="utf-8">
+					+ bộ kí tự hiển thị ngôn ngữ
+		+ <link> : kết nối CSS...
+			<link rel="icon" type="image/x-icon" href="Link.ico">
+				+ Icon con con trên tiêu đề trang Web 
+				+ Từ khóa GG : "Favicon make"
+	+ <body> : Chính là thân trang Web, viết code HTML vào để hiển thị trang Web 
+		+ <h1> - <h6>: heading => tiêu đề
+		+ <p> : Định nghĩa một đoạn văn bản (paragraph)
+			Các đoạn văn sẽ xuống dòng tự động xuống hàng khi kết thúc đoạn.
+		+ <span> : Bao bọc 1 đoạn text
+			Chỉ có ý nghĩa trong CSS khi trong 1 đoạn văn bạn muốn định dạng 1 cụm từ nào đó "ví dụ màu đỏ chỗ này" 
+			và không ảnh hưởng đến ý nghĩa của 1 đoạn văn.
+		+ <br> : xuống dòng, ngày nay ít khi sử dụng nữa 
+		+ <a> : tạo liên kết có thể Click chuôt được.
+			+ Thuộc tính "href" : đường dẫn mà liên kết trỏ đến. Có 2 loại đường dẫn
+				+ Đường dẫn tương đối
+				+ Đường dẫn tuyệt đối
+			+ Thuộc tính "title" : miêu tả cho đường dẫn, sẽ ảnh hưởng đến phần SEO của GG, đây là giá trị của 1 trang Web. Quan trọng cực kì
+		+ <img/> : hiển thị hình ảnh
+			Trang Web không thể chứa hình ảnh, chỉ hiển thị hình ảnh riêng biệt
+			+ Thuộc tính "src" : địa chỉ của hình ảnh
+				+ đường dẫn tương đối
+				+ đường dẫn tuyệt đối
+			+ Thuộc tính "width" : chiều rộng phần hiển thị ảnh
+			+ Thuộc tính "height": chiều cao phần hiển thị ảnh
+			+ Thuộc tính "title": miêu tả của ảnh => có lợi cho SEO => GG không phải phân tích quá nhiều vẫn hiểu được nội dung của ảnh
+		+ <ul> ( un-order list ) =>danh sách không có thứ tự
+		+ <ol> ( order list ) => danh sách có thứ tự (sẽ có các số như 123 ở trước)
+			+ <li> (list) : Đi cùng với ul hoặc ol tạo ra một danh sách 
+			=> Hay dùng để làm Menu trang Web 
+		+ <div> : 
+			+Là một cái vùng trên trang Web (1 ô, 1 vùng)
+				div không phải để định dạng văn bản, mà thuộc về định dạng khối
+				div trông cũng khá giống p nhưng khác. Bởi vì div là một vùng
+			+ Nếu xét về ý nghĩa nội dụng bên trong của p thì Sever sẽ hiểu đó là một đoạn văn 
+				(tức là p chỉ chứa được đoạn văn)
+			+ Còn nội dung bên trong của div là một vùng( khối ) bên trong đó có thể chứa một đoạn văn, hình ảnh, một cái Form...
+				(tức là có thể chứa bất cứ thứ gì, bao gồm cả p bên trong div)
+		+ <table>: Bảng dữ liệu gồm các hàng các cột
+			+ Thuộc tính "colspan" : gộp cột
+			+ Thuộc tính "rowspan" : gộp hàng
+			+ Thuộc tính "width" : chiều rộng
+			+ Thuộc tính "height" : chiều cao
+			+ <th> (table head) : tiêu đề của bảng (đề mục)
+			+ <tr> (table row) : dòng
+			+ <td> (table data) : cột	
+		+ <form>: vùng nhập liệu, làm nhiệm vụ gửi dữ liệu đi khi ta nhấn submit( hoặc Enter)
+			+ Thuộc tính "method" : Phương thức truyền dữ liệu đi,gồm 2 phương thức (Phần backend sẽ nói đến sâu hơn)
+				+ GET: truyền dữ liệu trên thanh địa chỉ (URL)
+				+ POST : truyền dữ liệu ngầm (Không nhìn thấy được)
+			+ Thuộc tính enctype = "multipart/form-data": phương thức mã hóa, đi kèm với input có type là "file" 
+			+ Thuộc tính "action" : Gửi dữ liệu trong form đi đến file nào (Phần backend sẽ nói đến sâu hơn)
+			+ <input>
+				+ Thuộc tính "name": tên của dữ liệu (data) gửi đi , quan trọng nhất của input
+				+ Thuộc tính "type":
+					+ text : kiểu chữ
+					+ password : kiểu mật khẩu *****
+					+ submit : kiểu nút bấm gửi dữ liệu form đi
+					+ checkbox:
+					+ radio:
+					+ file : để chọn file dùng cho việc upload file lên sever của trang Web (Phần backend)
+				+ Thuộc tính "placeholder": chữ mờ trong input
+				+ Thuộc tính "value": giá trị của input 
+				+ Thuộc tính "checked": giá trị mặc định cho checkbox, radio
+			+ <select>:	
+				+ Thuộc tính "name": Tên của dữ liệu (data) sẽ gửi đi đến thuộc tính "action"
+				+ <option> : là combobox
+					+ Nội dung bên trong option chỉ để hiển thị
+					+ Thuộc tính "value": giá trị quy định cho combobox, sẽ được gửi giá trị này đi
+			+ <button> : giống như input có type là button
+				+ Thuộc tính "name": Tên của dữ liệu (data) gửi đi
+				+ Thuộc tính "value": giá trị của button
+			+ <fieldset> : gom các thành phần lại, giống như groupbox
+				+ <legend>: là tiêu đề của fieldset
+			+ <label> : là chữ bổ sung cho input hoặc một thứ gì khác.
+				+ Thuộc tính "for": liện hệ với "id" của input
+				+ Khi nhấn vào label thì sẽ forcus vào input
+				+ Hai đã liên kết với nhau qua "for" và "id" của input
+		+ Các HTML5: Phục vụ cho SEO
+			+ <section> : Gần giống như <div> =>ý nghĩa là một cái vùng riêng biệt
+			+ <header> : Định nghĩa phần đầu của trang Web 
+			+ <footer> : Định nghĩa phần chân của trang Web
+			+ <siderbar> : Menu phụ bên phả hoặc trái
+			+ <article> : Định nghĩa đây là 1 bài viết
+================================================================================================
+TÓM TẮT VẤN ĐỀ VỀ CÁC THẺ HTML:
+Các HTML sẽ được chia làm 2 loại theo nhiệm vụ chính:
+	- hiển thị nội dung
+		+ h1->h6 : heading
+		+ p : Đoạn văn 
+		+ span
+		+ img : Hình ảnh 
+		+ input
+		+ button
+		+ table
+		+ select
+		+ li
+		+ a
+		+ ...
+	- định dạng, giao diện:
+		+ div
+		+ header
+		+ footer 
+		+ section
+		+ article
+		+ ul,ol ...
+Các thẻ HTML được chia làm 2 loại theo hiển thị:
+-Block && Inline :
+	+ Block: Dạng Khối, chím trọn 1 dòng
+		div, p, h, form, ul, li, ol...
+	+ Inline: Nằm cùng trên 1 dòng chung với các thẻ khác
+		span, a, input, button, select,...
+=> Thành phần Block không thể nằm trong thành phần Inline
+	Inline không thể set width, height
+================================================================================================
+KẾT LUẬN CHUNG => 	
+	+ Thẻ Nội dung có thể chứa thẻ nội dung 
+	+ Thẻ Định dạng có thể chứa các thẻ nội dung, còn các thẻ nội dung không thể chứa các thẻ định dạng.
+	Giá trị của một trang Web là gì:
+		+ Được lên Top GG => Có thêm lượng truy cập
+		+ Mang lại lợi ích cho người đọc, cho chủ trang Web
+		=> Trang Web phải đúng trước, còn chuyện đẹp hay không tính sau 
+Xong HTML (Đà Nẵng, 2/22/2021)
+-Ôn lại 
+	+ 18/03/2021

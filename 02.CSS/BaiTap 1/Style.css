@@ -1,0 +1,313 @@
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.clear-fix {
+    clear: both;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.container {
+    width: 1010px;
+    margin: 0 auto;
+}
+
+
+/* HEADER */
+
+#header-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+#header-top-right {
+    margin: auto 0;
+}
+
+img.logo {
+    max-width: 200px;
+}
+
+#menu {
+    background-color: brown;
+}
+
+#menu a {
+    color: aliceblue;
+}
+
+#header-menu {
+    height: 34px;
+    display: flex;
+    justify-content: space-between;
+}
+
+li {
+    margin: auto 0;
+}
+
+
+/* Tiêu điểm */
+
+#tieudiem {
+    display: flex;
+    justify-content: space-between;
+}
+
+#tieudiem>ul {
+    display: flex;
+    justify-content: space-between;
+}
+
+#tieudiem>ul>li {
+    margin-left: 15px;
+}
+
+#tieudiem div {
+    display: flex;
+    justify-content: space-between;
+}
+
+#bnt-youtube {
+    margin-left: 20px;
+}
+
+#content-left {
+    float: left;
+    width: 700px;
+}
+
+.tinnoibat {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    max-height: 431px;
+}
+
+#content-right {
+    float: right;
+    width: 300px;
+}
+
+.tinnoibat article:first-child {
+    max-width: 510px;
+}
+
+.tinnoibat article:first-child img {
+    max-width: 510px;
+}
+
+.tinnoibat article:first-child h2 {
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.tinnoibat article:first-child p {
+    font-size: 15px;
+}
+
+.tinnoibat article:not(#content-left article:first-child) {
+    max-width: 179px;
+    margin-top: 5px;
+}
+
+.tinnoibat article:not(#content-left article:first-child) {
+    max-width: 160px;
+}
+
+.tinnoibat article:not(#content-left article:first-child) img {
+    display: none;
+}
+
+.tinnoibat article:not(#content-left article:first-child) h2 {
+    font-size: 13px;
+}
+
+.tinnoibat article:not(#content-left article:first-child) p {
+    display: none;
+}
+
+
+/* TIN MOI */
+
+.tinmoi {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.tinmoi article {
+    flex-basis: 165px;
+}
+
+.tinmoi article img {
+    max-width: 165px;
+}
+
+.tinmoi article h2 {
+    font-size: 14px;
+    font-weight: unset;
+}
+
+
+/* TIN TUC HANG NGAYF
+ */
+
+.tintuchangngay {
+    margin-top: 30px;
+}
+
+.tintuchangngay>h2 {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #CC0300;
+    padding-left: 0;
+    padding-right: 15px;
+    display: inline;
+}
+
+.tintuchangngay>ul {
+    display: inline;
+    border-bottom: 1px solid rgba(160, 159, 159, 0.822);
+}
+
+.tintuchangngay>ul li {
+    display: inline;
+    margin-left: 10px;
+}
+
+.content-tintuchangngay {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 300px;
+}
+
+#tintuchangngay-left {
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+#tintuchangngay-left article:first-child {
+    height: 100%;
+}
+
+#tintuchangngay-left article:first-child img {
+    max-width: 333px;
+}
+
+#tintuchangngay-left article:nth-child(1n+2) {
+    margin-top: 10px;
+    width: 180px;
+}
+
+#tintuchangngay-left article:nth-child(1n+2) img {
+    display: none;
+}
+
+#tintuchangngay-left article:nth-child(1n+2) h2 {
+    font-size: 13px;
+}
+
+#tintuchangngay-left article:nth-child(1n+2) p {
+    display: none;
+}
+
+#tintuchangngay-right {
+    display: flex;
+    width: 180px;
+    flex-direction: column;
+}
+
+
+/* TIN PHUONG TIEN */
+
+.tinphuongtingiaothong {
+    margin-top: 50px;
+}
+
+#header-tinphuongtingiaothong {
+    display: flex;
+}
+
+#header-tinphuongtingiaothong>img {
+    max-width: 146px;
+}
+
+#header-tinphuongtingiaothong ul li {
+    display: inline;
+}
+
+#content-tinphuongtingiaothong {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#content-tinphuongtingiaothong article {
+    width: 330px;
+}
+
+#content-tinphuongtingiaothong article img {
+    max-width: 322px;
+}
+
+#content-tinphuongtingiaothong h2 a {
+    font-size: 13px;
+}
+
+#content-tinphuongtingiaothong article:nth-child(1n+3) {
+    width: 220px;
+}
+
+#content-tinphuongtingiaothong article:nth-child(1n+3) img {
+    max-width: 220px;
+}
+
+
+/* CONTENT RIGHT */
+
+#content-right img {
+    max-width: 300px;
+}
+
+#menu-sliderbar {
+    width: 300px;
+}
+
+#menu-sliderbar h2 {
+    display: inline;
+}
+
+#menu-sliderbar ol li {
+    list-style: armenian;
+}
+
+.theodongsukien {
+    width: 300px;
+}
+
+.theodongsukien img {
+    max-width: 300px;
+}
+
+
+/* FOOTER */
+
+footer {
+    height: 128px;
+    background-color: rgb(226, 241, 202);
+}
